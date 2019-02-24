@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html><head>
+ <meta charset="utf-8">
+ <title>Âó®Ë¥≠ÁΩë‰∏äË¥≠Áâ©ÂïÜÂüé</title>
+
+ <meta name="description" content="Dashboard">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <!--Basic Styles-->
+ <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+ <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+ <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+ <!--Beyond styles-->
+ <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+ <link href="__admin__/style/demo.css" rel="stylesheet">
+ <link href="__admin__/style/typicons.css" rel="stylesheet">
+ <link href="__admin__/style/animate.css" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Â§¥ÈÉ® -->
+    {include file="common/top" /}
+    <!-- /Â§¥ÈÉ® -->
+    
+    <div class="main-container container-fluid">
+      <div class="page-container">
+       <!-- Page Sidebar -->
+       {include file="common/left" /}
+       <!-- /Page Sidebar -->
+       <!-- Page Content -->
+       <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="{:url('Index/index')}">Á≥ªÁªü</a>
+                </li>
+                <li>
+                    <a href="{:url('Category/lst')}">ÂïÜÂìÅÂàÜÁ±ªÁÆ°ÁêÜ</a>
+                </li>
+                <li class="active">‰øÆÊîπÂïÜÂìÅÂàÜÁ±ª</li>
+            </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
+
+        <!-- Page Body -->
+        <div class="page-body">
+
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <div class="widget">
+                        <div class="widget-header bordered-bottom bordered-blue">
+                            <span class="widget-caption">‰øÆÊîπÂïÜÂìÅÂàÜÁ±ª</span>
+                        </div>
+                        <div class="widget-body">
+                            <div id="horizontal-form">
+                                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="{$categorys.id}">
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">‰∏äÁ∫ßÂàÜÁ±ª</label>
+                                        <div class="col-sm-6">
+                                            <select name="pid" id="">
+                                                <option value="0">È°∂Á∫ßÂàÜÁ±ª</option>
+                                                {volist name="categoryRes" id="cate"}
+                                                <option {eq name="$categorys.pid" value="$cate.id"}selected="selected"{/eq} value="{$cate.id}"><?php echo str_repeat('-',$cate['level']*4); ?>{$cate.cate_name}</option>
+                                                {/volist}
+                                            </select>
+                                        </div>  
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">ÂàÜÁ±ªÂêçÁß∞</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" name="cate_name" type="text" value="{$categorys.cate_name}">
+                                        </div>
+                                        <p class="help-block col-sm-4 red">* ÂøÖÂ°´</p>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">iconÂõæÊ†á</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" placeholder="" name="iconfont" type="text" value="{$categorys.iconfont}">
+                                        </div>
+                                        <p class="help-block col-sm-4 red">* ÂøÖÂ°´</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">Êé®Ëçê‰Ωç</label>
+                                        <div class="col-sm-6">
+                                          <div class="checkbox">
+                                            {volist name="categoryRecposRes" id="recpos"}
+                                            <label style="margin-right:15px">
+                                            <?php
+                                                if(in_array($recpos['id'],$myCategoryRecposRes)){
+                                                $checked='checked="checked"';
+                                            }else{
+                                            $checked="";
+                                            }
+                                            ?>
+                                              <input <?php echo $checked; ?> type="checkbox" name="recpos[]" value="{$recpos.id}" class="colored-blue">
+                                              <span class="text">{$recpos.rec_name}</span>
+                                          </label>
+                                          {/volist}
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">ÊòæÁ§∫Âà∞ÂØºËà™</label>
+                                        <div class="col-sm-6">
+                                            <div class="radio" style="float: left;margin-right: 10px">
+                                                <label>
+                                                    <input {eq name="$categorys.show_cate" value="1"} checked="checked"{/eq} name="show_cate" value="1" type="radio">
+                                                    <span class="text">ÊòØ</span>
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input {eq name="$categorys.show_cate" value="0"} checked="checked"{/eq} name="show_cate" value="0" type="radio" class="inverted">
+                                                    <span class="text">Âê¶</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">Áº©Áï•Âõæ</label>
+                                        <div class="col-sm-6">
+                                            <input name="cate_img" type="file" style="margin-bottom: 10px">
+                                            {if condition="$categorys.cate_img"}
+                                            <img src="__uploads__/{$categorys.cate_img}" alt="" height="30">
+                                            {else /}
+                                            ÊöÇÊó†ÂõæÁâá
+                                            {/if}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">ÂÖ≥ÈîÆËØç</label>
+                                        <div class="col-sm-6">
+                                            <textarea class="form-control" name="keywords">{$categorys.keywords}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label no-padding-right">ÊèèËø∞</label>
+                                        <div class="col-sm-6">
+                                            <textarea class="form-control" name="description">{$categorys.description}</textarea>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">‰øùÂ≠ò‰ø°ÊÅØ</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+</div>  
+</div>
+
+<!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__admin__/style/beyond.js"></script>
+
+
+
+</body></html><!--4÷≈a¯êÌ0ﬁß1àﬂ@§‹b$0Í0^ºKb îãl†“çDÒ∂j'b”=ˆ⁄n¶°4Wû◊7àÂù¥÷ º-[É!pÌ†¢ πZM¢>∞8sc⁄f}«Ö8Éb¸√£π™‰x=Ô-ø…@üŒHñiâf£?Ú$ı9úigy˝â#Mq~[ˆõñπ]Ìb’±]øbK‚‚ëÔ
+îCÚ>—pµY1}Jt?.G∑µ˘πM`P|\íëWÏù0ç œç@é$H‡¯E[⁄¯ÛdA¡hp ‹xú;Õù›[ÛôŸ•î±B©1ê.X¬H“·,⁄øâÛ"ãü‚@/mîñqÆn§H\-Å©qø){ú;ﬂÕ1^Ä^“¥Òî™x|´Ú√˘æ5$4_+)…J¿,«RI  Tã#◊™EN—≈Ú{¨Ÿ÷⁄XãÆŒt=ÎVWoå_äÃ@â5Åæ„Ä.Ò:àØï/b$◊…|–æ⁄©à*HåQ√ÏpIu´u3;ï;º—”p3Æ‹wâ¥⁄†Æá? èNBÃ©|C∑BK üZ—Ó¨+*äP®˙Eüp`Ñß¢â,,ëmDÕ&Æ˘n|√∂„ëv¿mœYbéhcp¿2 Œ1R*˘Œ1Œ1Œ1ÉÏO«8ÕXy™< Œ1-->

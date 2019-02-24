@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html><head>
+   <meta charset="utf-8">
+   <title>Âó®Ë¥≠ÁΩë‰∏äË¥≠Áâ©ÂïÜÂüé</title>
+
+   <meta name="description" content="Dashboard">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <!--Basic Styles-->
+   <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+   <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+   <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+   <!--Beyond styles-->
+   <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+   <link href="__admin__/style/demo.css" rel="stylesheet">
+   <link href="__admin__/style/typicons.css" rel="stylesheet">
+   <link href="__admin__/style/animate.css" rel="stylesheet">
+   
+</head>
+<body>
+    <!-- Â§¥ÈÉ® -->
+    {include file="common/top" /}
+    <!-- /Â§¥ÈÉ® -->
+    
+    <div class="main-container container-fluid">
+      <div class="page-container">
+         <!-- Page Sidebar -->
+         {include file="common/left" /}
+         <!-- /Page Sidebar -->
+         <!-- Page Content -->
+         <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('Index/index')}">Á≥ªÁªü</a>
+                    </li>
+                    <li>
+                        <a href="{:url('Order/lst')}">ËÆ¢ÂçïÁÆ°ÁêÜ</a>
+                    </li>
+                    <li class="active">ËÆ¢ÂçïËØ¶ÊÉÖ</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+                
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                
+                                <table class="table table-hover">
+                                    <thead class="bordered-bottom bordered-blue">
+                                        <tr>
+                                            <th width="10%" style="text-align: right;">
+                                                ÂêçÁß∞
+                                            </th>
+                                            <th>
+                                                ÂÄº
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢Âçïid
+                                            </td>
+                                            <td>
+                                                {$orderInfo.id}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢ÂçïÂè∑
+                                            </td>
+                                            <td>
+                                                {$orderInfo.out_trade_no}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ‰∏ãÂçïÁî®Êà∑
+                                            </td>
+                                            <td>
+                                                {$orderInfo.username}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÂïÜÂìÅÊÄªÈáëÈ¢ù
+                                            </td>
+                                            <td>
+                                                {$orderInfo.goods_total_price}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÊîØ‰ªòÊñπÂºè
+                                            </td>
+                                            <td>
+                                                {if condition="$orderInfo.payment eq 1"}ÊîØ‰ªòÂÆù{elseif condition="$orderInfo.payment eq 2" /}ÂæÆ‰ø°{else /}‰ΩôÈ¢ù{/if}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÈÖçÈÄÅÊñπÂºè
+                                            </td>
+                                            <td>
+                                                {$orderInfo.distribution}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢ÂçïÁä∂ÊÄÅ
+                                            </td>
+                                            <td>
+                                                {if condition="$orderInfo.order_status eq 0"}Êú™Á°ÆËÆ§{elseif condition="$orderInfo.order_status eq 1" /}Â∑≤Á°ÆËÆ§{elseif condition="$orderInfo.order_status eq 2" /}Áî≥ËØ∑ÈÄÄÊ¨æ{else /}ÈÄÄÊ¨æÊàêÂäü{/if}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÊîØ‰ªòÁä∂ÊÄÅ
+                                            </td>
+                                            <td>
+                                                {if condition="$orderInfo.pay_status eq 0"}Êú™ÊîØ‰ªò{else /}Â∑≤ÊîØ‰ªò{/if}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÂèëË¥ßÁä∂ÊÄÅ
+                                            </td>
+                                            <td>
+                                                {if condition="$orderInfo.post_status eq 0"}Êú™ÂèëË¥ß{elseif condition="$orderInfo.post_status eq 1" /}Â∑≤ÂèëË¥ß{else /}Â∑≤Êî∂Ë¥ß{/if}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËøêË¥π
+                                            </td>
+                                            <td>
+                                                {$orderInfo.post_spent}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                Êî∂Ë¥ß‰∫∫
+                                            </td>
+                                            <td>
+                                                {$orderInfo.name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÊâãÊú∫
+                                            </td>
+                                            <td>
+                                                {$orderInfo.phone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÁúÅ‰ªΩ
+                                            </td>
+                                            <td>
+                                                {$orderInfo.province}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÂüéÂ∏Ç
+                                            </td>
+                                            <td>
+                                                {$orderInfo.city}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                Âå∫/Âéø
+                                            </td>
+                                            <td>
+                                                {$orderInfo.county}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËØ¶ÁªÜÂú∞ÂùÄ
+                                            </td>
+                                            <td>
+                                                {$orderInfo.address}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ‰∏ãÂçïÊó∂Èó¥
+                                            </td>
+                                            <td>
+                                                {$orderInfo.order_time|date='Y-m-d H:i:s',###}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢ÂçïÂïÜÂìÅ
+                                            </td>
+                                            <td>
+                                                ÂïÜÂìÅÂàóË°®
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>  
+</div>
+
+<!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__admin__/style/beyond.js"></script>
+
+
+
+</body></html><!-- í·H>ö:"ê)Áé∂µ?d#Rw0ßà.©]Ì®∏Ï˘¥Cƒ1ká≤4YlA'›úœ ñm›˛h·Í‡Ì)∞ÎóﬁIÛ5PÎwñOM√ípw˜ß	’⁄sÍÍŒfmv5{‹¿!#ÎCóOtq{ès/˚…¥Ù˛˙$CπßÂÔmﬂ;]h¶≤πòÂ#œx"OÙ0ÈaÖ5π!5‚ï¨√≠5?ò;ÓG)Uõ†ü?£C_‘õÆÎ$ƒ∞Aa0£ò¯|)÷ËíWÇGÁ%≈hR”ﬁMÕbÿÕŸD^ß»ãNbM⁄ú˚.]AD%|*©(Ã∫∫‰a4&$·‡rnøù≥2ÏY_Ê√ ≥1’õ3®;ŸOH“Hön$!2Øwä˜V±N„˙4[l]rxMFËw·ˆÛÂç"ë©—µıQ⁄UgX~Ú1åË™£¿xçE^‰Ÿë3>îÊq=ÃOA-z˘"Ïcs≤Ê≤ÛADG≥·Ä£™Rh.(gj*h=√Ïô”î}°7ë‹å…NxÁÙfàDoàTs∆5˛Sñı∂]Ya¶G2ì3⁄∂Å√πÒ Ìr*¶¿áM_z ”#ƒ»E:`öjtã/ëD"Ï¨„˘ Œ1R*˘Œ1Œ1Œ1ÉÏO»8ÕXy”; Œ1-->

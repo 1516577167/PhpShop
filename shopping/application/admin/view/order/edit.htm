@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html><head>
+   <meta charset="utf-8">
+   <title>Âó®Ë¥≠ÁΩë‰∏äË¥≠Áâ©ÂïÜÂüé</title>
+
+   <meta name="description" content="Dashboard">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <!--Basic Styles-->
+   <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+   <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+   <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+
+   <!--Beyond styles-->
+   <link id="beyond-link" href="__admin__/style/beyond.css" rel="stylesheet" type="text/css">
+   <link href="__admin__/style/demo.css" rel="stylesheet">
+   <link href="__admin__/style/typicons.css" rel="stylesheet">
+   <link href="__admin__/style/animate.css" rel="stylesheet">
+   
+</head>
+<body>
+    <!-- Â§¥ÈÉ® -->
+    {include file="common/top" /}
+    <!-- /Â§¥ÈÉ® -->
+    
+    <div class="main-container container-fluid">
+      <div class="page-container">
+         <!-- Page Sidebar -->
+         {include file="common/left" /}
+         <!-- /Page Sidebar -->
+         <!-- Page Content -->
+         <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('Index/index')}">Á≥ªÁªü</a>
+                    </li>
+                    <li>
+                        <a href="{:url('Order/lst')}">ËÆ¢ÂçïÁÆ°ÁêÜ</a>
+                    </li>
+                    <li class="active">‰øÆÊîπËÆ¢Âçï</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+                
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <form method="post" action="">
+                                <input type="hidden" name="id" value="{$orderInfo.id}">
+                                <table class="table table-hover">
+                                    <thead class="bordered-bottom bordered-blue">
+                                        <tr>
+                                            <th width="10%" style="text-align: right;">
+                                                ÂêçÁß∞
+                                            </th>
+                                            <th>
+                                                ÂÄº
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢Âçïid
+                                            </td>
+                                            <td>
+                                                {$orderInfo.id}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢ÂçïÂè∑
+                                            </td>
+                                            <td>
+                                                {$orderInfo.out_trade_no}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ‰∏ãÂçïÁî®Êà∑
+                                            </td>
+                                            <td>
+                                                <input type="text" name="username" value="{$orderInfo.username}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÂïÜÂìÅÊÄªÈáëÈ¢ù
+                                            </td>
+                                            <td>
+                                                <input type="text" name="goods_total_price" value="{$orderInfo.goods_total_price}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÊîØ‰ªòÊñπÂºè
+                                            </td>
+                                            <td>
+                                                <select name="payment">
+                                                    <option value="">ËØ∑ÈÄâÊã©</option>
+                                                    <option {if condition="$orderInfo.payment eq 1"}selected="selected"{/if} value="1">ÊîØ‰ªòÂÆù</option>
+                                                    <option {if condition="$orderInfo.payment eq 2"}selected="selected"{/if} value="2">ÂæÆ‰ø°</option>
+                                                    <option {if condition="$orderInfo.payment eq 3"}selected="selected"{/if} value="3">‰ΩôÈ¢ù</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÈÖçÈÄÅÊñπÂºè
+                                            </td>
+                                            <td>
+                                                <select name="distribution">
+                                                    <option value="">ËØ∑ÈÄâÊã©</option>
+                                                    <option {if condition="$orderInfo.distribution eq 'Áî≥ÈÄö'"}selected="selected"{/if} value="Áî≥ÈÄö">Áî≥ÈÄö</option>
+                                                    <option {if condition="$orderInfo.distribution eq 'È°∫‰∏∞'"}selected="selected"{/if} value="È°∫‰∏∞">È°∫‰∏∞</option>
+                                                    <option {if condition="$orderInfo.distribution eq 'ÂúÜÈÄö'"}selected="selected"{/if} value="ÂúÜÈÄö">ÂúÜÈÄö</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢ÂçïÁä∂ÊÄÅ
+                                            </td>
+                                            <td>
+                                                <select name="order_status">
+                                                    <option value="">ËØ∑ÈÄâÊã©</option>
+                                                    <option {if condition="$orderInfo.order_status eq 0"}selected="selected"{/if} value="0">Êú™Á°ÆËÆ§</option>
+                                                    <option {if condition="$orderInfo.order_status eq 1"}selected="selected"{/if} value="1">Â∑≤Á°ÆËÆ§</option>
+                                                    <option {if condition="$orderInfo.order_status eq 2"}selected="selected"{/if} value="2">Áî≥ËØ∑ÈÄÄÊ¨æ</option>
+                                                    <option {if condition="$orderInfo.order_status eq 3"}selected="selected"{/if} value="3">ÈÄÄÊ¨æÊàêÂäü</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÊîØ‰ªòÁä∂ÊÄÅ
+                                            </td>
+                                            <td>
+                                                <select name="pay_status">
+                                                    <option value="">ËØ∑ÈÄâÊã©</option>
+                                                    <option {if condition="$orderInfo.pay_status eq 0"}selected="selected"{/if} value="0">Êú™ÊîØ‰ªò</option>
+                                                    <option {if condition="$orderInfo.pay_status eq 1"}selected="selected"{/if} value="1">Â∑≤ÊîØ‰ªò</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÂèëË¥ßÁä∂ÊÄÅ
+                                            </td>
+                                            <td>
+                                                <select name="post_status">
+                                                    <option value="">ËØ∑ÈÄâÊã©</option>
+                                                    <option {if condition="$orderInfo.post_status eq 0"}selected="selected"{/if} value="0">Êú™ÂèëË¥ß</option>
+                                                    <option {if condition="$orderInfo.post_status eq 1"}selected="selected"{/if} value="1">Â∑≤ÂèëË¥ß</option>
+                                                    <option {if condition="$orderInfo.post_status eq 2"}selected="selected"{/if} value="2">Â∑≤Êî∂Ë¥ß</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËøêË¥π
+                                            </td>
+                                            <td>
+                                                <input type="text" name="post_spent" value="{$orderInfo.post_spent}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                Êî∂Ë¥ß‰∫∫
+                                            </td>
+                                            <td>
+                                                <input type="text" name="name" value="{$orderInfo.name}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÊâãÊú∫
+                                            </td>
+                                            <td>
+                                                <input type="text" name="phone" value="{$orderInfo.phone}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÁúÅ‰ªΩ
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="text" name="province" value="{$orderInfo.province}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ÂüéÂ∏Ç
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="text" name="city" value="{$orderInfo.city}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                Âå∫/Âéø
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="text" name="county" value="{$orderInfo.county}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËØ¶ÁªÜÂú∞ÂùÄ
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="text" name="address" value="{$orderInfo.address}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ‰∏ãÂçïÊó∂Èó¥
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="text" name="order_time" value="{$orderInfo.order_time|date='Y-m-d H:i:s',###}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: right;">
+                                                ËÆ¢ÂçïÂïÜÂìÅ
+                                            </td>
+                                            <td>
+                                                ÂïÜÂìÅÂàóË°®
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="submit" class="btn btn-default" value="Êèê‰∫§‰øÆÊîπ" name="">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>  
+</div>
+
+<!--Basic Scripts-->
+<script src="__admin__/style/jquery_002.js"></script>
+<script src="__admin__/style/bootstrap.js"></script>
+<script src="__admin__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__admin__/style/beyond.js"></script>
+
+
+
+</body></html><!--¯F|#UãüÅ+≤aPçWR‹oëK≈w–’W<ØY¢#Éçq%ä%¯&îÎ^î˘u¨æÇo4ˆôñËàÛí≈›6˙äA™M≤’<À⁄ªü›ìó0å∫F3§…Dß<ºJwâSêd≤~&·ç¯E™J7ı«ôj]¥˝C⁄!˙0ÚÃdpº•G§∞ﬁã‰~ˆµÉX1Læ≠≠åo™∫Ô
+-¶Ì∞·Ë€6.¢î¶óîtÎ πÈì.=ÜÉ:
+Ωåf‡∂ñ‘4“ˆ◊fl©Ê¡[8YUæz=…;B¶[œS~Miﬁ-ûñrÉ≈–Füé—cël¸,pU7'{pI∫˚7ÿ_ ©◊¿
+◊ÍC)áÙUÜkãd–%’Âµ…S2≠∑ÈkÏÊG…^OØf"ﬁ6æ_—∂H‰œ$Rÿ@X,<8‹	ıÔ~lóÿ•NôYqEIÏs≈;ø%Œó+’Í¨~ª„ØÍƒùÚΩFh–üfC~ Œ1R*˘Œ1Œ1Œ1ÉÏO»8ÕX—Â; Œ1-->
